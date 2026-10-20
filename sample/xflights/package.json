@@ -1,0 +1,46 @@
+{
+  "name": "xflights",
+  "version": "0.1.0",
+  "private": true,
+  "description": "xflights sample showing a role flag joined from the AMS mirror.",
+  "_comment_cds": "No direct @sap/cds dependency. A second copy would split this sample from the plugin. cds is taken from the repository root.",
+  "scripts": {
+    "watch": "cds watch"
+  },
+  "dependencies": {
+    "@cap-js/sqlite": "^3",
+    "@sap/ams": "^3",
+    "@sap/xssec": "^4",
+    "cap-ams-roles": "file:../.."
+  },
+  "devDependencies": {
+    "@sap/ams-dev": "^2",
+    "@sap/cds-dk": "^10"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": { "url": ":memory:" }
+      },
+      "ams-roles": {
+        "debounceMs": 100
+      },
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "alice": {
+            "policies": ["cap.BookingAgent"],
+            "roles": ["DutyManager"]
+          },
+          "bob": {
+            "policies": ["cap.Viewer"]
+          },
+          "carol": {
+            "policies": ["cap.RegionalAgent"]
+          }
+        }
+      }
+    }
+  }
+}

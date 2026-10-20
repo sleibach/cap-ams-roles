@@ -1,0 +1,3 @@
+SCHEMA {
+  Airline : String
+}

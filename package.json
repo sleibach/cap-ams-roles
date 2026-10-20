@@ -1,0 +1,77 @@
+{
+  "name": "cap-ams-roles",
+  "version": "0.1.0",
+  "description": "CDS plugin that mirrors AMS policy assignments and derived CAP roles into database tables so they can be joined.",
+  "main": "cds-plugin.js",
+  "license": "Apache-2.0",
+  "author": "Soeren Leibach",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sleibach/cap-ams-roles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sleibach/cap-ams-roles/issues"
+  },
+  "homepage": "https://github.com/sleibach/cap-ams-roles#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "cds-plugin.js",
+    "dist",
+    "db",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "test": "tsc && jest --runInBand",
+    "test:hana": "HANA_TEST=1 jest test/hana.test.js --runInBand --forceExit",
+    "sample": "npm --prefix sample/xflights run watch"
+  },
+  "workspaces": [
+    "sample/xflights"
+  ],
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/test/**/*.test.js"
+    ],
+    "testTimeout": 90000
+  },
+  "keywords": [
+    "cds",
+    "cap",
+    "ams",
+    "authorization"
+  ],
+  "devDependencies": {
+    "@cap-js/cds-test": "^1",
+    "@sap/cds": "^10",
+    "@sap/cds-dk": "^10",
+    "@types/node": "^22",
+    "jest": "^30.3.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@sap/ams": "^3",
+    "@sap/cds": ">=9"
+  },
+  "peerDependenciesMeta": {
+    "@sap/ams": {
+      "optional": true
+    }
+  },
+  "cds": {
+    "requires": {
+      "ams-roles": {
+        "model": "cap-ams-roles/db/ams-roles",
+        "principalTouchInterval": 3600,
+        "lockWait": 5,
+        "debounceMs": 1000,
+        "enabled": true
+      }
+    }
+  }
+}

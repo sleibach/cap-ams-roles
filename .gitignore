@@ -1,0 +1,9 @@
+node_modules/
+gen/
+_out/
+*.log
+.DS_Store
+sample/xflights/gen/
+sample/xflights/*.db
+sample/xflights/db.sqlite
+sample/xflights/.cds-services.json

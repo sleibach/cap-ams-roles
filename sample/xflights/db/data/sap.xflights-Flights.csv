@@ -1,0 +1,3 @@
+carrid,connid,fldate,price,currency,planetype,seatsmax,seatsocc
+LH,400,2026-03-01,420.00,EUR,A320,180,90
+UA,941,2026-03-02,510.00,USD,B777,300,120
